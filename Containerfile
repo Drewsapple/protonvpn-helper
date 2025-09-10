@@ -18,6 +18,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
+ENV PYTHONPATH=/app:${PYTHONPATH}
+COPY http_trace.py /app/http_trace.py
+COPY sitecustomize.py /app/sitecustomize.py
 COPY list_servers.py /app/list_servers.py
 
 CMD ["python3", "/app/list_servers.py"]
